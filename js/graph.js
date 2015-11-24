@@ -3,11 +3,11 @@ var Graph = {};
 
 // the data object
 var data = {
-	0: ["N1","N2","S"],
-	1: ["N2","N3","W"],
-	2: ["N2","N3","N"],
-	3: ["N2","N3","E"],
-	3: ["N2","N3","E"]
+	0: ["N1","N2","N"],
+	1: ["N2","N3","S"],
+	2: ["N3","N4","W"],
+	3: ["N4","N5","S"],
+	4: ["N5","N6","W"]
 };
 
 /*Draw function*/
@@ -24,7 +24,7 @@ Graph.draw = function ( data ) {
 	ctx.beginPath();
 	ctx.moveTo(startX, startY);
 
-	// loop throught the data
+	// loop through the data
 	// object and plot for each data
 	// point
 	for ( var key in data ) {
@@ -98,10 +98,44 @@ Graph.draw = function ( data ) {
 	    count++; 
 	}
 
+	// naming the vertices
+	count = 0;
+	ctx.font = "30px Arial";
+
+	for ( var key in data ) {
+		
+		if ( Array.isArray( data[key] ) && data[key].length === 3 ) {
+			// for north
+			if ( data[key][2] === "N" ) {				
+				ctx.fillText(data[key][0],startX, startY - ( count * 50 ) - 10 );
+			}
+			// for south
+			if ( data[key][2] === "S" ) {
+				ctx.fillText(data[key][0],startX, startY + ( count * 50 ) - 10 );
+			}
+			// for east
+			if ( data[key][2] === "E" ) {
+				ctx.fillText(data[key][0],startX + ( count * 50 ), startY - 10);
+			}
+			// for west
+			if ( data[key][2] === "W" ) {				
+				ctx.fillText(data[key][0],startX - ( count * 50 ), startY - 10 );
+			}
+
+		} else {
+			console.log( data );
+			throw new Error( "Invalid Data" );
+		}
+
+		
+	    count++; 
+	}
+
 };
 
 /* The get path function,
 should show all paths available
+to a given destination
 */
 Graph.traverse = function () {
 
