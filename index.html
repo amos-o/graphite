@@ -2,37 +2,123 @@
 
 <html>
 <head>
-	<title>Graphing App Demo</title>
+	<title>Graphing Library Demo</title>
 
 	<meta charset = "utf-8" />
 	
 	<!--css-->
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/styles.css" />
+
+	<!--scripts-->
+	<script type="text/javascript" src = "js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src = "js/bootstrap.min.js"></script>
+	<script type="text/javascript" src = "js/graph.js"></script>
 </head>
 	<body>
+		<script>
+			$(document).ready(function() {
+				/*data = {
+					0: ["Nairobi","Nakuru","N"],
+					1: ["Nakuru","Kericho","S"],
+					2: ["Kericho","Ahero","S"],
+					3: ["Ahero","Kisumu","W"],
+					4: ["Kisumu","Uganda","N"],
+					5: ["Uganda","Mauritius","E"],
+					//6: ["Mauritius","","E"]
+				};*/
+
+				// create new graph object
+				var myGraph = new Graph();
+
+				// data object as a global
+				data = {};	
+
+				// build data object with input values
+				$("#add").click( function() {
+					var count = 0;
+
+					for( var key in data ) {
+						count++;
+					}
+
+					// get node name
+					var node = $("#name").val();
+
+					// get direction
+					var direction = $("#dir").val();
+
+					data[count] = [node,"",direction[0]];
+					$("#nmessage").html( "<h3>"+ node + " node added</h3>" );
+				});
+
+				// draw graph event
+				$("#draw").click( function() {
+					//console.log(data);
+					myGraph.draw( data );
+					myGraph.traverse();
+				});
+
+				// clear canvas event
+				$("#clear").click( function () {
+					myGraph.clear();					
+				});
+					
+			});				
+		</script>
+
 		<div class = "row">
-		</div>
-		<div class = "row">
-			<div class = "col-lg-12">
+			<!--panel 1-->
+			<div class = "col-lg-8">
 				<div class="panel panel-primary">
 					<div class="panel-heading">GRAPH LIBRARY DEMO</div>
+
 				  	<div class="panel-body" id = "canvasDiv">
-				  		<canvas id="myCanvas" width="860" height="700">  				
+				  		<canvas id="myCanvas" width="865" height="570">  				
 		  				</canvas>
-				  	</div>
-				  	<div class="panel-footer">Panel Footer</div>
+				  	</div>				  	
 				</div>
 			</div>
+
+			<!--panel 2-->
 			<div class = "col-lg-4">
+				<div class="panel panel-primary">
+					<div class="panel-heading">DATA FORM</div>
+						<button id = "clear" class="btn btn-primary">Clear Canvas</button>
+						<br/>
+
+						<div class = "row">
+							<div class = "col-md-9">
+
+								<div id = "add-node">
+									<div class="form-group">
+										<label for="name">Node Name:</label>
+									    <input type="text" class="form-control" id="name">
+									</div>
+									<div class="form-group">							   	
+										<label for="dir">Node Direction:</label>
+
+										<select class="form-control" id="dir">
+										    <option>North</option>
+										    <option>South</option>
+										    <option>East</option>
+										    <option>West</option>
+									  	</select>								
+									</div>
+
+									<button class="btn btn-primary" id = "add">Add Node</button>
+									<button class="btn btn-primary" id="draw">Draw Existing Nodes</button>
+									<div id ="nmessage"></div>
+								</div>
+
+							</div>
+						</div>
+
+				  	<div class="panel-body"></div>
+				</div>
 			</div>
-		</div>
-		
+			<!--end of panel 2-->
 
-		<!--scripts-->
-		<script type="text/javascript" src = "js/jquery-2.1.4.min.js"></script>
-		<script type="text/javascript" src = "js/bootstrap.min.js"></script>
-		<script type="text/javascript" src = "js/graph.js"></script>
-
+		</div> <!--end of row-->		
 	</body>
 </html>
