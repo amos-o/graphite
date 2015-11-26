@@ -325,6 +325,8 @@
 		}
 
 		console.log(paths);
+		return paths;
+		
 	};
 	/*END OF Graph.traverse() FUNCTION*/
 
