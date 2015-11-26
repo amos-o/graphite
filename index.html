@@ -49,14 +49,20 @@
 					var direction = $("#dir").val();
 
 					data[count] = [node,"",direction[0]];
-					$("#nmessage").html( "<h3>"+ node + " node added</h3>" );
+					$("#nmessage").html( "<h4>"+ node + " node added</h3>" );
 				});
 
 				// draw graph event
 				$("#draw").click( function() {
 					//console.log(data);
 					myGraph.draw( data );
+					//myGraph.traverse();
+				});
+
+				// show paths
+				$("#traverse").click( function() {
 					myGraph.traverse();
+					$("#paths").html();
 				});
 
 				// clear canvas event
@@ -84,11 +90,12 @@
 			<div class = "col-lg-4">
 				<div class="panel panel-primary">
 					<div class="panel-heading">DATA FORM</div>
+					<div class="panel-body">
 						<button id = "clear" class="btn btn-primary">Clear Canvas</button>
-						<br/>
+						<hr/>
 
-						<div class = "row">
-							<div class = "col-md-9">
+						<div class = "row"><!--first row-->
+							<div class = "col-md-10">
 
 								<div id = "add-node">
 									<div class="form-group">
@@ -111,13 +118,20 @@
 									<div id ="nmessage"></div>
 								</div>
 
-							</div>
-						</div>
+							</div> <!--end of column-->	
+				  		</div><!--end of row-->
 
-				  	<div class="panel-body"></div>
+				  		<hr />
+				  		<div class = "row"><!--start of row 2-->
+				  			<div class = "col-md-10">
+				  				<button id="traverse" class ="btn btn-primary">Show Paths</button>
+				  				<div id = "paths"></div>
+				  			</div>
+				  		</div><!--end of row 2-->
+
+				  	</div> <!--end of panel body-->
 				</div>
-			</div>
-			<!--end of panel 2-->
+			</div> <!--end of panel 2-->
 
 		</div> <!--end of row-->		
 	</body>
