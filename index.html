@@ -61,8 +61,12 @@
 
 				// show paths
 				$("#traverse").click( function() {
-					myGraph.traverse();
-					$("#paths").html();
+					var paths = myGraph.traverse();
+					var html = "<h3>";
+					paths.forEach(function(value){
+						html += value + " => ";
+					});
+					$("#paths").html(html);
 				});
 
 				// clear canvas event
