@@ -324,7 +324,6 @@
 			paths.push(data[key][0]);
 		}
 
-		console.log(paths);
 		return paths;
 		
 	};

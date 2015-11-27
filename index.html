@@ -50,13 +50,14 @@
 
 					data[count] = [node,"",direction[0]];
 					$("#nmessage").html( "<h4>"+ node + " node added</h3>" );
+
 				});
 
 				// draw graph event
 				$("#draw").click( function() {
 					//console.log(data);
 					myGraph.draw( data );
-					//myGraph.traverse();
+					//console.log(data);
 				});
 
 				// show paths
