@@ -169,19 +169,19 @@
 			// move to the correct place
 			// for north
 			if ( data[key][2] === "N" ) {
-				ctx.moveTo( startX, startY - ( count * 50 ) );
+				ctx.moveTo( startX, startY - ( count * 60 ) );
 			}
 			// for south
 			if ( data[key][2] === "S" ) {
-				ctx.moveTo( startX, startY + ( count * 50 ) );
+				ctx.moveTo( startX, startY + ( count * 60 ) );
 			}
 			// for east
 			if ( data[key][2] === "E" ) {
-				ctx.moveTo( startX + ( count * 50 ), startY );
+				ctx.moveTo( startX + ( count * 60 ), startY );
 			}
 			// for west
 			if ( data[key][2] === "W" ) {
-				ctx.moveTo( startX - ( count * 50 ), startY );
+				ctx.moveTo( startX - ( count * 60 ), startY );
 			}
 			
 			ctx.font = "30px Arial"; // for naming
@@ -189,7 +189,7 @@
 			// when it is in the correct place, draw the line
 			if( data[key][0] === add[0] ) { // the node we are adding to exists			
 				if ( add[2] === "N" ) {
-					ctx.lineTo( startX, startY - ( count * 50 ) );
+					ctx.lineTo( startX, startY - ( count * 60 ) );
 					ctx.strokeStyle = 'Black';
 					ctx.lineWidth = 3;
 					ctx.stroke();
@@ -197,10 +197,10 @@
 					ctx.fill();
 					// name the vertex
 					ctx.fillStyle = 'Black';
-					ctx.fillText(add[1], startX, startY - ( count * 50 ) );
+					ctx.fillText(add[1], startX, startY - ( count * 60 ) );
 					// draw vertex
 					ctx.beginPath();				
-					ctx.arc( startX, startY - ( count * 50 ),10,0,2*Math.PI);
+					ctx.arc( startX, startY - ( count * 60 ),10,0,2*Math.PI);
 					ctx.stroke();
 					ctx.fillStyle = 'Orange';
 				    ctx.fill();
@@ -210,7 +210,7 @@
 				}
 				// for south
 				if ( add[2] === "S" ) {
-					ctx.lineTo( startX, startY + ( count * 50 ) );
+					ctx.lineTo( startX, startY + ( count * 60 ) );
 					ctx.strokeStyle = 'Black';
 					ctx.lineWidth = 3;
 					ctx.stroke();
@@ -218,10 +218,10 @@
 					ctx.fill();
 					// name the vertex
 					ctx.fillStyle = 'Black';
-					ctx.fillText(add[1], startX, startY + ( count * 50 ) );
+					ctx.fillText(add[1], startX, startY + ( count * 60 ) );
 					// draw vertex
 					ctx.beginPath();				
-					ctx.arc( startX, startY + ( count * 50 ),10,0,2*Math.PI);
+					ctx.arc( startX, startY + ( count * 60 ),10,0,2*Math.PI);
 					ctx.stroke();
 					ctx.fillStyle = 'Orange';
 				    ctx.fill();
@@ -229,7 +229,7 @@
 
 				// for east
 				if ( add[2] === "E" ) {
-					ctx.lineTo( startX + ( count * 50 ), startY );
+					ctx.lineTo( startX + ( count * 60 ), startY );
 					ctx.strokeStyle = 'Black';
 					ctx.lineWidth = 3;
 					ctx.stroke();
@@ -237,10 +237,10 @@
 					ctx.fill();
 					// name the vertex
 					ctx.fillStyle = 'Black';
-					ctx.fillText(add[1], startX + ( count * 50 ), startY );
+					ctx.fillText(add[1], startX + ( count * 60 ), startY );
 					// draw vertex	
 					ctx.beginPath();			
-					ctx.arc( startX + ( count * 50 ), startY,10,0,2*Math.PI);
+					ctx.arc( startX + ( count * 60 ), startY,10,0,2*Math.PI);
 					ctx.stroke();
 					ctx.fillStyle = 'Orange';
 				    ctx.fill();
@@ -248,7 +248,7 @@
 
 				// for west
 				if ( add[2] === "W" ) {
-					ctx.lineTo( startX - ( count * 50 ), startY );
+					ctx.lineTo( startX - ( count * 60 ), startY );
 					ctx.strokeStyle = 'Black';
 					ctx.lineWidth = 3;
 					ctx.stroke();
@@ -256,10 +256,10 @@
 					ctx.fill();
 					// name the vertex
 					ctx.fillStyle = 'Black';
-					ctx.fillText(add[1], startX - ( count * 50 ), startY );
+					ctx.fillText(add[1], startX - ( count * 60 ), startY );
 					// draw vertex	
 					ctx.beginPath();			
-					ctx.arc( startX - ( count * 50 ), startY,10,0,2*Math.PI);
+					ctx.arc( startX - ( count * 60 ), startY,10,0,2*Math.PI);
 					ctx.stroke();
 					ctx.fillStyle = 'Orange';
 				    ctx.fill();
