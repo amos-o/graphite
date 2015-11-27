@@ -14,3 +14,9 @@ form {
 #add-node {
 	margin: 5px;
 }
+
+#canvasDiv {
+	overflow: scroll;
+	width: ;
+	height: 605px;
+}
