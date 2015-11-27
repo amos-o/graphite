@@ -62,11 +62,29 @@
 				// show paths
 				$("#traverse").click( function() {
 					var paths = myGraph.traverse();
-					var html = "<h3>";
+					var html = "<h3> Full Path: ";
+					var count = 0;
+
 					paths.forEach(function(value){
+						count++;
 						html += value + " => ";
 					});
+
+					// print full path
+					html[count-1] = " ";
 					$("#paths").html(html);
+
+					// other paths:					
+					for( var i = 0; i < count; i++ ) {
+						var other = "<h3>";
+						other += "Path " + (i + 1) + ": " + paths[i] + " to " + paths[i+2] + " via " + paths[i+1] + "";
+						other += "</h3>";
+						
+						if(typeof paths[i] === "undefined" || typeof paths[i+1] === "undefined" || typeof paths[i+2] === "undefined" ) {
+							break;
+						}
+						$( other ).appendTo( "#paths" );
+					}
 				});
 
 				// clear canvas event
@@ -84,7 +102,7 @@
 					<div class="panel-heading">GRAPH LIBRARY DEMO</div>
 
 				  	<div class="panel-body" id = "canvasDiv">
-				  		<canvas id="myCanvas" width="865" height="570">  				
+				  		<canvas id="myCanvas" width="1065" height="640">  				
 		  				</canvas>
 				  	</div>				  	
 				</div>
